@@ -1,0 +1,10 @@
+# Optional: Cloudflare Secret দিলে default password override হবে।
+ADMIN_PASSWORD="Jihad@2026#Store"
+
+# Optional: না দিলেও Worker ADMIN_PASSWORD থেকে stable signed-session keys তৈরি করবে।
+# ADMIN_SECRET="optional-long-random-secret"
+# SESSION_SECRET="optional-different-long-random-secret"
+
+# Optional SSLCOMMERZ credentials
+SSLCOMMERZ_STORE_ID="your-sandbox-or-live-store-id"
+SSLCOMMERZ_STORE_PASSWORD="your-sandbox-or-live-store-password"
