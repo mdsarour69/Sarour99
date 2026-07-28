@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f14">
+  <meta name="description" content="Premium digital products and secure wallet payments.">
+  <title>Sarour Store</title>
+  <link rel="icon" href="/logo.jpeg">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" type="button" data-route="home" aria-label="Home">
+        <span class="brand-logo"><img src="/logo.jpeg" alt="Store logo"></span>
+        <span class="brand-copy">
+          <strong id="brandName">Sarour Store</strong>
+          <small id="brandTagline">Premium digital marketplace</small>
+        </span>
+      </button>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <button type="button" class="nav-link active" data-route="home"><span>⌂</span><b data-i="home">Home</b></button>
+        <button type="button" class="nav-link" data-route="shop"><span>◇</span><b data-i="shop">Shop</b></button>
+        <button type="button" class="nav-link" data-route="wallet"><span>◈</span><b data-i="wallet">Wallet</b></button>
+        <button type="button" class="nav-link" data-route="support"><span>◌</span><b data-i="support">Support</b></button>
+      </nav>
+
+      <div class="top-actions">
+        <select id="languageSelect" class="language-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="bn">বাংলা</option>
+          <option value="ar">العربية</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+        <button type="button" class="balance-pill" data-route="wallet">
+          <span class="pulse-dot"></span>
+          <span class="money-value" data-balance>0.00</span>
+        </button>
+        <button type="button" class="admin-trigger" data-action="open-admin" aria-label="Admin panel">⚙</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="page-home" class="page active">
+        <div id="announcement" class="announcement hidden"></div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="kicker"><i></i><span data-i="premiumMarket">Premium digital marketplace</span></span>
+            <h1 id="heroTitle" class="blood-title"><span id="heroTitleLine1">Digital products.</span><br><em id="heroTitleLine2">Delivered with confidence.</em></h1>
+            <p id="heroDescription">Browse trusted subscriptions, pay securely, and track every purchase from one polished dashboard.</p>
+            <div class="hero-actions">
+              <button type="button" class="button primary" data-route="shop"><span data-i="exploreProducts">Explore products</span><b>→</b></button>
+              <button type="button" class="button ghost" data-route="wallet" data-i="addFunds">Add funds</button>
+            </div>
+            <div class="trust-row">
+              <span><b>✓</b><span data-i="liveStock">Live stock</span></span>
+              <span><b>✓</b><span data-i="verifiedPayments">Verified payments</span></span>
+              <span><b>✓</b><span data-i="sharedDatabase">Shared database</span></span>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-card-top">
+              <span data-i="yourWallet">Your wallet</span>
+              <span class="secure-chip">🔒 <span data-i="secured">Secured</span></span>
+            </div>
+            <div class="hero-balance money-value" data-balance>0.00</div>
+            <p data-i="walletHint">Verified payments are credited automatically. Manual payments appear after admin approval.</p>
+            <div class="mini-stats">
+              <div><span data-i="orders">Orders</span><strong id="homeOrderCount">0</strong></div>
+              <div><span data-i="payments">Payments</span><strong id="homePaymentCount">0</strong></div>
+            </div>
+          </aside>
+        </div>
+
+        <div id="homepageCards" class="benefit-grid"></div>
+
+        <div class="section-heading compact">
+          <div><span class="kicker"><i></i><span data-i="featured">Featured</span></span><h2 data-i="popularProducts">Popular products</h2></div>
+          <button type="button" class="text-button" data-route="shop"><span data-i="viewAll">View all</span> →</button>
+        </div>
+        <div id="featuredProducts" class="product-grid"></div>
+      </section>
+
+      <section id="page-shop" class="page">
+        <div class="page-heading">
+          <span class="kicker"><i></i><span data-i="marketplace">Marketplace</span></span>
+          <h1 data-i="chooseProduct">Choose your next premium product</h1>
+          <p data-i="chooseProductText">Search the catalog, check live stock, and purchase instantly using your wallet.</p>
+        </div>
+        <div class="filter-bar">
+          <label class="search-field"><span>⌕</span><input id="productSearch" type="search" data-i-placeholder="searchProducts" placeholder="Search products"></label>
+          <select id="categoryFilter" aria-label="Category"><option value="all">All categories</option></select>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+
+      <section id="page-wallet" class="page">
+        <div class="page-heading split-heading">
+          <div><span class="kicker"><i></i><span data-i="walletCenter">Wallet center</span></span><h1 data-i="manageFunds">Manage funds securely</h1><p data-i="manageFundsText">Use verified online payment or submit a manual transaction for approval.</p></div>
+          <div class="wallet-summary"><small data-i="availableBalance">Available balance</small><strong class="money-value" data-balance>0.00</strong><span id="userCode">••••••••</span></div>
+        </div>
+
+        <div class="payment-layout">
+          <div class="panel payment-panel">
+            <div class="segmented" role="tablist">
+              <button type="button" class="active" data-payment-tab="auto" data-i="autoPayment">Auto payment</button>
+              <button type="button" data-payment-tab="manual" data-i="manualPayment">Manual payment</button>
+            </div>
+
+            <div id="payment-auto" class="payment-tab active">
+              <div id="autoGatewayNotice" class="notice"></div>
+              <form id="autoPaymentForm" class="form-grid">
+                <label><span data-i="amount">Amount</span><input id="autoAmount" name="amount" type="number" min="0.01" step="0.01" required></label>
+                <label><span data-i="fullName">Full name</span><input id="autoName" name="name" maxlength="50" required></label>
+                <label><span data-i="email">Email</span><input id="autoEmail" name="email" type="email" maxlength="80" required></label>
+                <label><span data-i="phone">Phone</span><input id="autoPhone" name="phone" maxlength="20" required></label>
+                <button class="button primary wide" type="submit"><span data-i="continuePayment">Continue to secure payment</span><b>→</b></button>
+              </form>
+            </div>
+
+            <div id="payment-manual" class="payment-tab">
+              <div id="paymentMethodGrid" class="payment-method-grid" aria-label="Payment methods"></div>
+
+              <div id="selectedPayment" class="selected-payment">
+                <div><small id="selectedPaymentLabel">Select a payment method</small><strong id="selectedPaymentValue">—</strong></div>
+                <button type="button" class="button ghost small" data-action="copy-payment">Copy</button>
+              </div>
+              <p id="paymentInstructions" class="subtle"></p>
+              <form id="manualDepositForm" class="form-grid">
+                <input id="manualMethod" type="hidden" required>
+                <label><span data-i="amount">Amount</span><input id="manualAmount" type="number" min="0.01" step="0.01" required></label>
+                <label><span data-i="method">Selected method</span><input id="manualMethodDisplay" type="text" readonly></label>
+                <label class="full"><span data-i="transactionId">Transaction ID</span><input id="manualTxid" maxlength="150" required></label>
+                <button class="button primary wide" type="submit"><span data-i="submitForReview">Submit for review</span><b>→</b></button>
+              </form>
+            </div>
+          </div>
+
+          <aside class="panel activity-panel">
+            <div class="panel-title"><div><span class="kicker"><i></i><span data-i="recentActivity">Recent activity</span></span><h2 data-i="walletHistory">Wallet history</h2></div></div>
+            <div id="walletLedger" class="activity-list"></div>
+          </aside>
+        </div>
+
+        <div class="history-grid">
+          <div class="panel"><div class="panel-title"><h2 data-i="paymentHistory">Payment history</h2></div><div id="paymentHistory" class="data-list"></div></div>
+          <div class="panel"><div class="panel-title"><h2 data-i="orderHistory">Order history</h2></div><div id="orderHistory" class="data-list"></div></div>
+        </div>
+
+        <div id="orderHelpPanel" class="panel order-help-panel hidden">
+          <div>
+            <span class="kicker"><i></i><span data-i="orderNotReceived">Order not received?</span></span>
+            <h2 data-i="getOrderSupport">Get delivery support</h2>
+            <p id="walletSupportNotice">Send your Order ID to the support admin or support group.</p>
+          </div>
+          <div class="support-link-row">
+            <a class="button primary hidden" data-support-link="admin" target="_blank" rel="noopener" data-i="supportAdmin">Support Admin</a>
+            <a class="button ghost hidden" data-support-link="group" target="_blank" rel="noopener" data-i="supportGroup">Support Group</a>
+            <a class="button ghost hidden" data-support-link="whatsapp-group" target="_blank" rel="noopener" data-i="whatsappGroup">WhatsApp Group</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-support" class="page">
+        <div class="page-heading">
+          <span class="kicker"><i></i><span data-i="supportCenter">Support center</span></span>
+          <h1 data-i="needHelp">Need help with an order?</h1>
+          <p data-i="needHelpText">Send a message from your secure session or contact the store directly.</p>
+        </div>
+        <div class="panel order-support-notice">
+          <div><strong data-i="orderNotReceived">Order not received?</strong><p id="supportNoticeText">Send your Order ID to the support admin or support group.</p></div>
+          <div class="support-link-row">
+            <a class="button primary hidden" data-support-link="admin" target="_blank" rel="noopener" data-i="supportAdmin">Support Admin</a>
+            <a class="button ghost hidden" data-support-link="group" target="_blank" rel="noopener" data-i="supportGroup">Support Group</a>
+            <a class="button ghost hidden" data-support-link="whatsapp-group" target="_blank" rel="noopener" data-i="joinWhatsappGroup">Join WhatsApp Group</a>
+          </div>
+        </div>
+        <div class="support-grid">
+          <form id="supportForm" class="panel form-card">
+            <div class="panel-title"><h2 data-i="sendMessage">Send a message</h2></div>
+            <label><span data-i="topic">Topic</span><input id="supportTopic" maxlength="120" required></label>
+            <label><span data-i="message">Message</span><textarea id="supportBody" rows="7" maxlength="2000" required></textarea></label>
+            <button class="button primary" type="submit" data-i="sendToAdmin">Send to admin</button>
+          </form>
+          <div class="support-cards">
+            <a id="whatsappLink" class="contact-card" href="#" target="_blank" rel="noopener"><span>◉</span><div><small>WhatsApp</small><strong data-i="chatNow">Chat now</strong><em id="whatsappContactValue">Not configured</em></div><b>↗</b></a>
+            <a id="telegramLink" class="contact-card" href="#" target="_blank" rel="noopener"><span>✦</span><div><small>Telegram</small><strong data-i="openTelegram">Open Telegram</strong><em id="telegramContactValue">Not configured</em></div><b>↗</b></a>
+            <a id="emailLink" class="contact-card" href="#"><span>✉</span><div><small data-i="email">Email</small><strong id="supportEmail">Not configured</strong></div><b>↗</b></a>
+            <a id="supportAdminCard" class="contact-card hidden" data-support-link="admin" target="_blank" rel="noopener"><span>🛟</span><div><small data-i="orderHelp">Order help</small><strong data-i="supportAdmin">Support Admin</strong><em data-i="sendOrderId">Send your Order ID</em></div><b>↗</b></a>
+            <a id="supportGroupCard" class="contact-card hidden" data-support-link="group" target="_blank" rel="noopener"><span>👥</span><div><small data-i="communitySupport">Community support</small><strong data-i="supportGroup">Support Group</strong><em data-i="askForHelp">Ask for order help</em></div><b>↗</b></a>
+            <a id="whatsappGroupCard" class="contact-card hidden" data-support-link="whatsapp-group" target="_blank" rel="noopener"><span>💬</span><div><small>WhatsApp</small><strong data-i="whatsappGroup">WhatsApp Group</strong><em data-i="joinUpdates">Join for updates and support</em></div><b>↗</b></a>
+            <div class="security-note"><span>🛡</span><div><strong data-i="securityNotice">Security notice</strong><p data-i="securityNoticeText">Never share your OTP, PIN, card password or admin credentials with anyone.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-admin" class="page admin-page">
+        <div class="admin-head">
+          <div><span class="kicker"><i></i><span data-i="controlCenter">Control center</span></span><h1 data-i="adminDashboard">Admin dashboard</h1><p id="gatewayStatus">Gateway status</p></div>
+          <div class="admin-head-actions"><button type="button" class="button ghost" data-action="refresh-admin" data-i="refresh">Refresh</button><button type="button" class="button danger" data-action="admin-logout" data-i="logout">Logout</button></div>
+        </div>
+
+        <div class="stat-grid">
+          <article><span data-i="products">Products</span><strong id="statProducts">0</strong><small data-i="activeCatalog">Active catalog</small></article>
+          <article><span data-i="users">Users</span><strong id="statUsers">0</strong><small data-i="secureSessionsLabel">Secure sessions</small></article>
+          <article><span data-i="orders">Orders</span><strong id="statOrders">0</strong><small data-i="allPurchases">All purchases</small></article>
+          <article><span data-i="pending">Pending</span><strong id="statPending">0</strong><small data-i="paymentReviews">Payment reviews</small></article>
+          <article><span data-i="walletLiability">Wallet liability</span><strong id="statLiability">0</strong><small data-i="userBalances">User balances</small></article>
+        </div>
+
+        <div class="admin-tabs" role="tablist">
+          <button type="button" class="active" data-admin-tab="overview" data-i="overview">Overview</button>
+          <button type="button" data-admin-tab="products" data-i="products">Products</button>
+          <button type="button" data-admin-tab="payment-methods">Payment Methods</button>
+          <button type="button" data-admin-tab="homepage">Homepage</button>
+          <button type="button" data-admin-tab="orders" data-i="orders">Orders</button>
+          <button type="button" data-admin-tab="payments" data-i="payments">Payments</button>
+          <button type="button" data-admin-tab="users" data-i="users">Users</button>
+          <button type="button" data-admin-tab="messages" data-i="messages">Messages</button>
+          <button type="button" data-admin-tab="settings" data-i="settings">Settings</button>
+        </div>
+
+        <div id="admin-overview" class="admin-tab active">
+          <div class="admin-grid two">
+            <div class="panel"><div class="panel-title"><h2 data-i="recentOrders">Recent orders</h2></div><div id="overviewOrders" class="data-list"></div></div>
+            <div class="panel"><div class="panel-title"><h2 data-i="recentPayments">Recent payments</h2></div><div id="overviewPayments" class="data-list"></div></div>
+          </div>
+          <div class="panel"><div class="panel-title"><h2 data-i="auditLog">Audit log</h2></div><div id="auditLog" class="table-wrap"></div></div>
+        </div>
+
+        <div id="admin-products" class="admin-tab">
+          <div class="section-actions"><div><h2 data-i="productManagement">Product management</h2><p data-i="productManagementText">Add, edit, feature, reorder or hide products.</p></div><button type="button" class="button primary" data-action="add-product">＋ <span data-i="addProduct">Add product</span></button></div>
+          <div id="adminProductTable" class="table-wrap"></div>
+        </div>
+
+        <div id="admin-payment-methods" class="admin-tab">
+          <div class="section-actions"><div><h2>Payment method management</h2><p>Add, edit or remove bKash, Nagad, Binance Pay, Telegram Wallet or any new method.</p></div><button type="button" class="button primary" data-action="add-payment-method">＋ Add method</button></div>
+          <div id="adminPaymentMethodTable" class="table-wrap"></div>
+        </div>
+
+        <div id="admin-homepage" class="admin-tab">
+          <div class="section-actions"><div><h2>Homepage cards</h2><p>Add, edit, reorder or remove homepage feature cards.</p></div><button type="button" class="button primary" data-action="add-homepage-card">＋ Add card</button></div>
+          <div id="adminHomepageCardTable" class="table-wrap"></div>
+        </div>
+
+        <div id="admin-orders" class="admin-tab">
+          <div class="section-actions"><div><h2 data-i="orderManagement">Order management</h2></div><button type="button" class="button ghost" data-export="orders">↓ CSV</button></div>
+          <div id="adminOrderTable" class="table-wrap"></div>
+        </div>
+
+        <div id="admin-payments" class="admin-tab">
+          <div class="section-actions"><div><h2 data-i="paymentManagement">Payment management</h2></div><div class="export-actions"><button type="button" class="button ghost" data-export="deposits">Manual CSV</button><button type="button" class="button ghost" data-export="payments">Auto CSV</button></div></div>
+          <div class="admin-grid two">
+            <div class="panel"><div class="panel-title"><h2 data-i="manualDeposits">Manual deposits</h2></div><div id="adminDepositList" class="data-list"></div></div>
+            <div class="panel"><div class="panel-title"><h2 data-i="automaticPayments">Automatic payments</h2></div><div id="adminPaymentList" class="data-list"></div></div>
+          </div>
+        </div>
+
+        <div id="admin-users" class="admin-tab">
+          <div class="section-actions"><div><h2 data-i="userWallets">User wallets</h2></div><button type="button" class="button ghost" data-export="users">↓ CSV</button></div>
+          <div id="adminUserTable" class="table-wrap"></div>
+        </div>
+
+        <div id="admin-messages" class="admin-tab">
+          <div class="section-actions"><div><h2 data-i="customerMessages">Customer messages</h2></div></div>
+          <div id="adminMessageList" class="data-list"></div>
+        </div>
+
+        <div id="admin-settings" class="admin-tab">
+          <form id="settingsForm" class="panel settings-form">
+            <div class="panel-title"><h2 data-i="storeSettings">Store settings</h2></div>
+            <div class="form-grid three">
+              <label><span data-i="storeName">Store name</span><input id="settingStoreName" required></label>
+              <label><span data-i="tagline">Tagline</span><input id="settingTagline"></label>
+              <label><span data-i="currency">Currency</span><input id="settingCurrency" maxlength="3" required></label>
+              <label><span>WhatsApp support number</span><input id="settingWhatsapp" inputmode="tel" placeholder="8801XXXXXXXXX"></label>
+              <label><span>Telegram username / link</span><input id="settingTelegram" placeholder="@username or https://t.me/username"></label>
+              <label><span>Telegram numeric ID</span><input id="settingTelegramId" inputmode="numeric" placeholder="Optional numeric user ID"></label>
+              <label><span data-i="supportEmail">Support email</span><input id="settingEmail" type="email"></label>
+              <label><span>WhatsApp group invite link</span><input id="settingWhatsappGroup" type="url" placeholder="https://chat.whatsapp.com/..."></label>
+              <label><span>Support admin link</span><input id="settingSupportAdmin" placeholder="https://wa.me/... or https://t.me/..."></label>
+              <label><span>Support group link</span><input id="settingSupportGroup" placeholder="https://t.me/... or WhatsApp group link"></label>
+              <label class="full"><span>Order not received support notice</span><textarea id="settingSupportNotice" rows="3" maxlength="1000"></textarea></label>
+              <label><span>Primary color</span><input id="settingPrimaryColor" type="color" value="#4f8cff"></label>
+              <label><span>Accent color</span><input id="settingSecondaryColor" type="color" value="#7c5cff"></label>
+              <label><span>Surface color</span><input id="settingSurfaceColor" type="color" value="#151b23"></label>
+              <label><span>Hero title line 1</span><input id="settingHeroLine1"></label>
+              <label><span>Hero title line 2</span><input id="settingHeroLine2"></label>
+              <label><span data-i="announcement">Announcement</span><input id="settingAnnouncement"></label>
+              <label class="full"><span>Hero description</span><textarea id="settingHeroDescription" rows="3"></textarea></label>
+              <label class="full"><span data-i="paymentInstructions">Payment instructions</span><textarea id="settingInstructions" rows="3"></textarea></label>
+              <label class="full"><span>Message shown after purchase</span><textarea id="settingPostPurchaseMessage" rows="3" maxlength="1000"></textarea></label>
+              <label class="full"><span>Footer text</span><input id="settingFooterText"></label>
+            </div>
+            <div class="toggle-grid">
+              <label class="toggle"><input id="settingManualEnabled" type="checkbox"><span></span><b data-i="enableManual">Enable manual payments</b></label>
+              <label class="toggle"><input id="settingAutoEnabled" type="checkbox"><span></span><b data-i="enableAuto">Enable auto payments</b></label>
+              <label class="toggle"><input id="settingMaintenance" type="checkbox"><span></span><b data-i="maintenanceMode">Maintenance mode</b></label>
+            </div>
+            <button class="button primary" type="submit" data-i="saveSettings">Save settings</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div><span id="footerStore">Sarour Store</span> · <span id="footerText">Secure digital commerce on Cloudflare</span></div>
+      <div class="footer-links">
+        <a class="hidden" data-support-link="admin" target="_blank" rel="noopener" data-i="supportAdmin">Support Admin</a>
+        <a class="hidden" data-support-link="group" target="_blank" rel="noopener" data-i="supportGroup">Support Group</a>
+        <a class="hidden" data-support-link="whatsapp-group" target="_blank" rel="noopener" data-i="whatsappGroup">WhatsApp Group</a>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button type="button" class="active" data-route="home"><span>⌂</span><b data-i="home">Home</b></button>
+    <button type="button" data-route="shop"><span>◇</span><b data-i="shop">Shop</b></button>
+    <button type="button" data-route="wallet"><span>◈</span><b data-i="wallet">Wallet</b></button>
+    <button type="button" data-route="support"><span>◌</span><b data-i="support">Support</b></button>
+  </nav>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="loader" class="loader" aria-hidden="true"><span></span></div>
+</body>
+</html>
