@@ -1,0 +1,23 @@
+{
+  "name": "sarour-store-cloudflare-premium",
+  "version": "4.4.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "configure": "node scripts/configure-cloudflare.mjs",
+    "verify:config": "node scripts/verify-config.mjs",
+    "check": "node --check src/worker.js && node --check public/app.js",
+    "validate": "npm run check && node scripts/verify-config.mjs && wrangler deploy --dry-run --outdir .wrangler-dry-run",
+    "deploy": "npm run check && node scripts/verify-config.mjs && wrangler deploy",
+    "db:create": "wrangler d1 create sarour-store-db-full",
+    "db:migrate:local": "wrangler d1 migrations apply sarour-store-db-full --local",
+    "db:migrate:remote": "node scripts/verify-config.mjs && wrangler d1 migrations apply sarour-store-db-full --remote",
+    "test:admin-login": "node scripts/test-admin-login.mjs",
+    "test:order-contact": "node scripts/test-order-contact.mjs",
+    "test": "npm run check && npm run test:admin-login && npm run test:order-contact"
+  },
+  "devDependencies": {
+    "wrangler": "^4.24.3"
+  }
+}

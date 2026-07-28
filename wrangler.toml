@@ -1,0 +1,17 @@
+name = "sarour-store-final-v10-cloudflar"
+main = "src/worker.js"
+compatibility_date = "2026-07-28"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sarour-store-db-full"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+PAYMENT_MODE = "sandbox"
+
