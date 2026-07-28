@@ -9,8 +9,8 @@ not_found_handling = "single-page-application"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "sarour-store-db-full"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_name = "sarour_stor_premium"
+database_id = "efd761a1-66e1-49a6-b08f-8c3b1937d889"
 
 [vars]
 PAYMENT_MODE = "sandbox"
